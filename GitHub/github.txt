@@ -1,0 +1,58 @@
+[[FrontPage]]
+
+#setlinebreak(on)
+
+
+*GitHub [#gdbd9925]
+
+
+GitHub（ギットハブ）はソフトウェア開発プロジェクトのための共有ウェブサービスであり、Gitバージョン管理システムを使用する。
+Ruby on RailsおよびErlangで記述されており、GitHub社によって保守されている。
+
+SNSとしての機能も含まれており、公開リポジトリ（誰でも公開できるリポジトリ）で、自分が作ったモジュールやexeファイル等を
+共有出来る。
+
+[参考]
+http://ja.wikipedia.org/wiki/GitHub
+
+
+
+#br
+**家のGitHubのURL [#w72c3a52]
+
+１．HPマシン
+''URL''　＝　https://github.com/tsujii/tsujii
+
+
+
+#br
+
+**環境構築 [#k05d9b0a]
+
+[参考URL]
+http://chocolatina.github.io/github-for-windows-tutorial/
+
+#br
+
+①GitHubのアカウントを作成
+http://chocolatina.github.io/github-for-windows-tutorial/
+
+②GitHubのインストール
+結構時間が掛かる
+　１．Internet経由で、ダウンローダーをインストール
+　２．OSの再起動が走る
+　３．続きのダウンロード
+
+③GitHubで公開するディレクトリをローカルマシン上（Cドライブ等）に作成する。
+　例.C:\tsujii
+
+④GitHubへログインする。
+　１．アカウント　＝　tsujiiayumi1@yahoo.co.jp
+　２．Password    ＝ 自分で決めたパスワード
+
+⑤リポジトリの作成
+
+⑥GitHubディレクトリにファイルを置いて、コミット
+
+⑦GitHubとsyncさせる。
+
