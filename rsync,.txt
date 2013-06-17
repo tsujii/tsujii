@@ -1,0 +1,50 @@
+[[Linuxのシェルまとめ]]
+
+
+#setlinebreak(on)
+
+*rsync [#k6379e9b]
+
+''構文''
+
+&color(blue){①通常};&br;# rsync -avz  ${UserID}@${Host}:/xxxx/xxxx/dirname /xxxx/xxxx/
+
+&color(blue){②圧縮して転送するバージョン};&br;# rsync -avz  ${UserID}@${Host}:/xxxx/xxxx/dirname/ /xxxx/xxxx/
+
+&color(blue){③削除して完全同期するパターン};&br;# rsync -av --delete  ${UserID}@${Host}:/xxxx/xxxx/dirname /xxxx/xxxx/
+
+
+#br
+COLOR(red):''注意点1''
+rsyncでは、両方がリモートのディレクトリは失敗する。
+片方はローカルディレクトリでないと駄目。
+
+COLOR(red):''注意点2''
+rsyncでは、以下二つでは大きく意味が違う
+　１．${UserID}@${Host}:/xxxx/xxxx/dirname/　＝　これはdirname以下のファイルをすべて転送
+　２．${UserID}@${Host}:/xxxx/xxxx/dirname 　＝　これはdirnameのディレクトリを移動させる（ディレクトリがバックアップされる）
+
+
+　
+
+**オプション [#u513e59c]
+
+#br
+
+|オプション|内容|h
+|BGCOLOR(#FFFFCC):-a|「-rlptgoD」と指定したのと同様の効果。&br;元のパーミッションやグループなどを保持したまま同期できるので、基本的に付加しておくのがよい。&br;アーカイブモードとも呼ばれる|
+|BGCOLOR(#FFFFCC):-v|処理中の経過ファイル名を表示する|
+|BGCOLOR(#FFFFCC):-n（--dry-run）|実行時の動作だけを表示。&br;テストに使用するとよい|
+|BGCOLOR(#FFFFCC):-z|データを圧縮する|
+|BGCOLOR(#FFFFCC):--delete|コピー元で削除されたファイルは、コピー先でも削除する。&br;-aオプションと同時に指定することでコピー元とコピー先を同期できることになる|
+|-e [シェル名]|リモートシェルを指定する。&br;デフォルトでsshが利用されるため、rshなどを使う特別な必要がなければ最近では用いない|
+|-r|指定したディレクトリ下の各ディレクトリも再帰的にバックアップする|
+|-u|追加されたファイルだけをコピーする|
+|--existing|更新されたファイルだけをコピーし、追加されたファイルは無視する|
+|--exclude=PATTERN|パターン一致するファイルを除外する（--exclude 'パターン'と書いてもよい）|
+|--exclude-from=FILE|ファイルに記述されたパターンと一致するファイルを除外する|
+|--include=PATTERN|パターン一致するファイルを除外しない|
+|--include-from=FILE|ファイルに記述されたパターンと一致するファイルを除外しない|
+|--stats|rsyncアルゴリズムの転送効率を表示する|
+|-h（--help）|ヘルプを表示する|
+

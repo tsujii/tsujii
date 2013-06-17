@@ -1,0 +1,80 @@
+[[Linuxのシェルまとめ]]
+
+
+#setlinebreak(on)
+
+*find [#k6379e9b]
+
+''構文''
+
+&color(blue){'' find 検索開始ディレクトリ 検索条件 コマンド''};
+
+
+
+&color(blue){①name指定};&br;# find . -name "*abc*"
+	abc.txt        -> HIT
+	xxx/           -> ×
+	xxx/abc.txt    -> HIT
+	abc/           -> HIT
+	abc/def.txt    -> ×
+
+&color(blue){②mtime指定};&br;# find . -ctime +4
+	-mtime  4|ちょうど4日前に修正されたファイル
+	-mtime +4|5日以前に修正されたファイル
+	-mtime -4|3日以内に修正されたファイル
+
+&color(blue){③-newer file指定};&br;# find . ! -newer xxxFile
+	xxxFileよりも古いファイルの一覧が表示される
+
+
+&color(blue){④-maxdepth 指定};&br;#  find / -maxdepth 2
+	/
+	/dev
+	/dev/network
+	/etc
+	/etc/defaults
+
+
+&color(blue){⑤-mindepth 指定};&br;#  find / -maxdepth 3
+	/dev/network/xxx/xxx
+	/dev/network/geom.ctl
+
+
+&color(blue){⑥-prune 指定};&br;#  find . -type d -name CVS -prune -o -print
+	CVSディレクトリ以外の場所を探す。
+	　→ここでのポイントは、-pruneの後の -o -printである。
+	　　-pruneが効くのはCVSディレクトリなので、それ以外をうまく表示してくれる。
+
+
+&color(blue){⑦-size 指定};&br;# find . -type f -size +100M ( or 100K)
+	lsで出てきたコマンドは、 -size +18088958c のcを付けたものと同じになる。
+	そっちの方が正しく評価出来る。
+	+100Mとかだとざっくりとした大きさの比較になる。
+	
+
+&color(blue){⑧コマンド 指定};&br;# find . -name \*~ -print -ls  &br;# find . -name \*~ -print -exec rm {} \; &br;# find . -name \*~ -print -ok rm {} \;
+	ls は、 ls -lirと同じ（inodeも表示される）
+	-exec はコマンド実行
+	-ok   は y or nを問い合わせる
+
+
+
+
+　
+
+**オプション [#p706dbb4]
+
+#br
+
+|オプション|内容|h
+|-atime n|最後にアクセスされたのがn日前のファイルを検索する|
+|-empty|空のファイルや中身のないディレクトリを検索する|
+|-group gname|グループ名がgnameのファイルを検索する（ID番号も指定可）|
+|-mmin n|データが最後に修正されたのがn分前のファイルを検索する|
+|-mtime n|データが最後に修正されたのが、n日前のファイルを検索する|
+|-name pattern|ファイル名がpatternと同じファイルを検索する。&br;ワイルド・カードを用いることができる|
+|-perm mode|ファイルのアクセス権がmodeであるファイルを検索する。&br;modeには8進数を用いることができる|
+|-type c|指定したファイル・タイプを検索する。&br;cはdがディレクトリを、fが通常ファイルを、lがシンボリック・リンクを表す|
+|-user uname|所有者がunameになっているファイルを検索する（IDの数値も指定可能）|
+|-size n[bckw]|nのサイズのファイルを検索する。&br;nの後にcを付加すると単位がバイトに、kを付加するとKバイトになる。&br;何も付けないとブロック（通常は1ブロック=512バイト）になる|
+
