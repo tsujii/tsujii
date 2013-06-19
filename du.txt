@@ -1,0 +1,52 @@
+[[Linuxのシェルまとめ]]
+
+#setlinebreak(on)
+
+
+* du [#o47a75d0]
+
+
+''構文''
+
+&color(blue){①通常};&br;# du -k /home/hoge
+
+#br
+&color(blue){②Mバイト表示};&br;# du -m .
+
+#br
+&color(red){③ユーザがわかりやすい形で表示};&br;# du -h
+
+
+#br
+
+**注意事項 [#y5ffcc61]
+
+読み込み権限がないディレクトリ以下は、パーミッションがないとして
+そこのディスク使用量はカウント出来ない。
+
+''$ du -h .''
+ 4.0K    ./aaa
+ 4.0K    ./AAA
+ 18M     ./hoge/fee
+ 147M    ./hoge
+ 20M     ./jar
+ 20M     ./BackupJar
+ 4.0K    ./AaA
+ 372M    .
+
+
+→　./BackupJarの読み込み権限を削除
+
+
+''$ du -h .''
+ 4.0K    ./aaa
+ 4.0K    ./AAA
+ 18M     ./hoge/fee
+ 147M    ./hoge
+ 20M     ./jar
+ du: cannot read directory `./BackupJar': 許可がありません
+ 4.0K    ./AaA
+ 352M    .
+
+20Mが見えないことによって、減少している。
+

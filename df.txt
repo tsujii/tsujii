@@ -1,0 +1,45 @@
+[[Linuxのシェルまとめ]]
+
+#setlinebreak(on)
+
+
+* df [#o47a75d0]
+
+
+''構文''
+
+&color(blue){①通常};&br;# df -k .
+
+#br
+&color(blue){②Mバイト表示};&br;# df -m
+
+#br
+&color(blue){③システムが使う領域も全て表示};&br;# df -all
+ $ df -all
+ Filesystem           1K-ブロック    使用   使用可 使用% マウント位置
+ /dev/mapper/VolGroup00-LogVol00
+                       38471112   2992996  33492376   9% /
+ proc                         0         0         0   -  /proc
+ sysfs                        0         0         0   -  /sys
+ devpts                       0         0         0   -  /dev/pts
+ /dev/sda1               101086     12163     83704  13% /boot
+ tmpfs                   517568         0    517568   0% /dev/shm
+ none                         0         0         0   -  /proc/sys/fs/binfmt_misc
+ sunrpc                       0         0         0   -  /var/lib/nfs/rpc_pipefs
+
+
+#br
+&color(blue){④inodeの使用量も表示};&br;# df -i
+
+#br
+&color(blue){⑤ローカルマウントのみ表示};&br;# df -l
+
+#br
+&color(red){⑥ユーザの見やすい形で表示};&br;# df -h
+ $ df -h
+ Filesystem          サイズ  使用  残り 使用% マウント位置
+ /dev/mapper/VolGroup00-LogVol00
+                        37G  2.9G   32G   9% /
+ /dev/sda1              99M   12M   82M  13% /boot
+ tmpfs                 506M     0  506M   0% /dev/shm
+
