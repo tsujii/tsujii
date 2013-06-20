@@ -3,69 +3,54 @@
 #setlinebreak(on)
 
 
-* cut [#o47a75d0]
+* alias [#o47a75d0]
 
 
 ''構文''
 
-COLOR(blue):''cut [-bcf位置] [-d 区切り文字] ファイル''
-COLOR(blue):　※区切り文字のデフォルトは、TABである。
+[1]csh・tcsh の場合
+　　→　イコールが付かない。
+% alias ls "ls -lFA"
+% alias du "du -k"
+% alias memo "mule ~/lib/memo"
+% alias f "find / -name '\!*' -print"
 
 #br
 
-''オプション''
-
-①-b位置
-バイト単位で切り出します。バイト位置を下記のように指定します。
-　　-b5　　:　5バイト目
-　　-b1,3　:　1バイト目と3バイト目
-　　-b2-5　:　2～5バイト目
-　　-b-3　:　先頭から3バイト
-　　-b5-　:　5バイト目以降
-
-②-c位置
-文字数単位で切り出します。文字位置を下記のように指定します。
-　　-c5　　:　5文字目
-　　-c1,3　:　1文字目と3文字目
-　　-c2-5　:　2～5文字目
-　　-c-3　:　先頭から3文字
-　　-c5-　:　5文字目以降
-
-③-f位置
-フィールド単位で切り出します。フィールド位置を下記のように指定します。
-　　-f5　　:　5番目のフィールド
-　　-f1,3　:　1番目と3番目のフィールド
-　　-f2-5　:　2～5番目のフィールド
-　　-f-3　:　先頭(1番目)から3番目のフィールド
-　　-f5-　:　5番目以降のフィールド
+[2]sh・bash の場合
+　　→　イコールが付く。
+$ alias ls="ls -lFA"
+$ alias du="du -k"
+$ alias memo="mule ~/lib/memo"
+$ alias f="find / -name '\!*' -print"
 
 
-④[-d 区切り文字]
-フィールドの区切り文字を指定します。デフォルトのフィールド区切り文字は「TAB」です。
+**使い方 [#eb06da51]
+#br
 
-　
+''①.bashrcや.profileに記載する''
+ alias f='find / -name '\''\!*'\'' -print'
+ alias h='history'
+ alias l.='ls -d .* --color=tty'
+ alias ll='ls -l --color=tty'
+ alias ls='ls -lrt'
+ alias vi='vim'
+ alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
 
-**使用例 [#vcf14b36]
+#br
+''②aliasを一時的に解除する方法''
+　　フルパスで実行する。
+　　$ /bin/cp -f cc.txt dd.txt
 
-''$ cut -c-10 file''
-　　「file」の先頭から10文字切り出して表示します。
-
-''$ cut -f2,4 file''
-　　「file」の2番目と4番目のフィールドを表示します。
-
-''$echo helloworld | cut -c5- ''
-　　「helloworld」の5番目以降の文字を切り出して表示する。
-
-''$cat hoge.txt | cut -d , -f 3''
-　　「hoge.txtの中身は1,2,3,4,5」→出力されるのは　3　のみ
-
-
-**重要 [#id645718]
-
-COLOR(red):cut -d は -fでないと使えない。
+　　COLOR(blue):\を付けて実行する。
+　　$ \cp -f cc.txt dd.txt
 
 
-''[OK]　$cat hoge.txt | cut -d , -f 3''
+#br
+''③alias一覧を表示''
+　　$ alias
 
-''[NG]　$cat hoge.txt | cut -d , -c 3''
-　　→エラーになる。
+
+#br
+''④aliasを解除する''
+　　$ unalias f
