@@ -1,0 +1,33 @@
+[[Linuxのシェルまとめ]]
+
+#setlinebreak(on)
+
+
+* mkdir [#o47a75d0]
+
+
+''構文''
+
+&color(blue){①通常};&br;# mkdir dirname
+#br
+&color(blue){②サブディレクトリ作成};&br;# mkdir -p 10/9/8/7/6
+#br
+&color(blue){③権限を付与};&br;# mkdir -m 744 hoge
+#br
+&color(blue){④合わせ技};&br;# mkdir -m 744 -p hoge/fee/bar
+　この場合は、barのみが744になる。
+　それ以外は、umaskに従う。
+
+
+#br
+
+**注意事項 [#y5ffcc61]
+
+''# mkdir -m 744 -p hoge/fee/bar　の罠''
+
+上記の場合744となるのは、barディレクトリのみ。
+それ以外はumaskに従うことになる。
+すべてのディレクトリを、744にしたい場合は以下を実行する。
+
+
+COLOR(red):''# mkdir -p hoge/fee/bar ; chmod -R 744 hoge''

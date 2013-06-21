@@ -1,0 +1,24 @@
+[[Linuxのシェルまとめ]]
+
+#setlinebreak(on)
+
+
+* echo [#o47a75d0]
+
+
+''構文''
+
+&color(blue){①通常};&br;# echo $PATH
+#br
+&color(blue){②改行なし};&br;# echo -n hogehoge
+　　上記はcshや、Solarisなどでは効かない。
+　　SolarisなどのSystemV系では、以下のようにする。
+　　COLOR(red):echo "AAA\c"
+#br
+&color(blue){③エスケープ文字を有効};&br;# echo -e "AAA\nBBB"
+　　上記はcshでは効かない。ただし/bin/echoは、通常通りエスケープは効く。
+　　つまりtcshやcshの中でのechoのみが、-eが効かないので、以下のようにする。
+　　COLOR(red):# /bin/echo -e "AAA\nBBB"
+
+
+#br
