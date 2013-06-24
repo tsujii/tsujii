@@ -1,0 +1,28 @@
+[[Linuxのシェルまとめ]]
+
+#setlinebreak(on)
+
+
+* cp [#o47a75d0]
+
+
+''構文''
+
+&color(blue){①通常(ディレクトリ毎 && タイムスタンプ・権限そのまま)};&br;# cp -rp
+#br
+&color(blue){②シンボリックリンクへコピー};&br;# cp -fs /home/centos1/20130624/hoge.txt dd.txt
+　　上記だと例えdd.txtに既にシンボリックリンクが張られていても、
+　　何もエラーになることなく、hoge.txtのシンボリックリンクが出来る。
+#br
+&color(blue){③バックアップ};&br;# cp -b aa.txt bb.txt
+　　上記はbb.txtが既にあれば、bb.txt~というバックアップを付けてくれる。
+#br
+&color(blue){④内容表示（View)};&br;# cp -v hogeDir feeDir
+　　上記はコピーの内容を表示してくれる。
+#br
+&color(blue){⑤-iオプション};&br;# cp -i hogeDir feeDir
+　　y / n を問い合わせる。
+#br
+&color(blue){⑥更新コピー（Update)};&br;# cp -u hogeDir feeDir
+　　タイムスタンプが新しいとコピーしない。
+#br

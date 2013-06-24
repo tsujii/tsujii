@@ -1,0 +1,47 @@
+[[Linuxのシェルまとめ]]
+
+#setlinebreak(on)
+
+
+* ps [#o47a75d0]
+
+
+''構文''
+
+&color(blue){①通常(全て表示)};&br;# ps auxw
+　　$ps -ef と意味は同じ。ただ、ps -ef はSystemV系（Soralis）でよく使う。
+　　
+　　普通はauxで終わりだが、wも付けておいた方がコマンドが長くなっても切れない。
+ ■wがない場合は、途中で表示が切れる。
+ root      3160  0.0  1.8  57568 14104 ?        S    22:31   0:00 /usr/libexec/wnck-applet --oaf-activa　←ここで切れている。
+ root      3162  0.0  1.8  88064 14020 ?        S    22:31   0:00 /usr/libexec/trashapplet --oaf-activa　←ここで切れている。
+ root      3171  0.0  0.1   2472   864 ?        S    22:31   0:00 /usr/libexec/mapping-daemon
+ ：
+ ：
+#br
+&color(blue){②環境変数も表示};&br;# ps auxe
+　　eが付くと、環境変数も併せて表示さえる。
+#br
+&color(blue){③mオプション（スレッド表示）};&br;# ps auxm
+　　Javaのスレッドなど便利だが、本気でやる場合はglanceとかが良い。
+#br
+
+|オプション|内容|h
+|-a|自分以外のユーザーのプロセスも表示する|
+|-c|task_structに格納されているコマンド名を表示する|
+|-e|「実行命令 + 」に環境変数を付加する|
+|-f|ツリー形式で表示する|
+|-h|ヘッダーを表示しない|
+|-j|pgidとsidを表示する|
+|-l|標準のPID、TTY、TIME、CMDに加え、F、S、UID、PPID、C、PRI、NI、ADDR、SZ、VSZ、RSS、WCHAN、STATも表示する|
+|-m|スレッドも表示する|
+|-n|USERとWCHANを数字で表示する|
+|-r|実行中のプロセスだけ表示する|
+|-s|シグナル形式で表示する|
+|-u|ユーザー名と開始時刻を表示する|
+|-v|vm 形式で表示する|
+|-w|１行追加して表示を拡大する。wを増やすことによって行数をさらに増やせる|
+|-x|制御端末のないプロセスの情報も表示する|
+|-S|子プロセスのCPU消費時間とページ・フォルトを合計する|
+|-txx|tty xxのプロセスのみ表示する|
+|-pids|表示するプロセスIDを指定する|
