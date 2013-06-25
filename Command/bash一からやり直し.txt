@@ -1,0 +1,22 @@
+
+
+#setlinebreak(on)
+*bash 一からやり直し [#kd10fbfc]
+
+bashを一からやり直す。
+やっぱり我流でやって来たところがあるから、全然なっていない。
+その根性を叩きなおす必要があるな。。
+
+　
+
+''一番良いURL''
+http://www.hpc.cs.ehime-u.ac.jp/~aman/linux/bash/
+
+''標準的なURL''
+http://www.oklab.org/program/sh.html
+
+''合計３ページに渡るURL''
+http://www.geocities.jp/showa_yojyo/note/newham05-note3.html
+
+''さっくりした復習URL''
+http://takuya-1st.hatenablog.jp/entry/20110206/1296981771
